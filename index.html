@@ -9,18 +9,27 @@
 <body>
   <div class="flex flex-col justify-center py-8">
     <h1 class="font-bold text-2xl mx-auto pb-8">
-      OpenAI Image Generator
+      OpenAI Test
     </h1>
-    <div class="flex flex-col items-center w-64 mx-auto">
-    
+    <div class="flex flex-row-reverse">
+      <input type="text" id="myapi" class="border px-2" value="" placeholder="sk-........"/>
+    <label class="font-bold">ApiKey:</label>
+  </div>
+    <div class="flex flex-col mx-8">
       <label class="font-bold">Prompt:</label>
       <input type="text" id="text" class="border px-2" value="a picture of a cat" />
-      <button id="button" class="bg-gray-500 w-24 my-2 py-2 rounded hover:bg-slate-400" onclick="runImageGenerate()">Generate Image</button>
-      <label class="font-bold">ApiKey:</label>
-      <input type="text" id="myapi" class="border px-2" value="" placeholder="sk-........"/>
-      <button id="button" class="bg-gray-500 w-24 my-2 py-2 rounded hover:bg-slate-400" onclick="runTextAnalisys()">Generate Image</button>
+     
+    </div>
+    <div class="flex mx-8">
+      <button id="button" class="bg-gray-500 w-32 my-2 py-2 rounded hover:bg-slate-400 mx-4" onclick="runImageGenerate()">Generate Image</button>
+      <button id="button" class="bg-gray-500 w-32 my-2 py-2 rounded hover:bg-slate-400" onclick="runTextAnalysis()">Analyse Text</button> 
     </div>
 
+<div class="flex mx-8 justify-center">
+  <textarea id="resultDiv1" name="" rows="8" cols="100" class="border">
+  </textarea>
+</div>
+    
     <div class="flex h-96 w-auto pt-4 mx-auto">
       <img id="resultDiv" src="" class="w-fit"></img>
     </div>
@@ -54,7 +63,7 @@
   }
 
 
-  function runTextAnalisys() {
+  function runTextAnalysis() {
     var text = document.getElementById("text").value;
     var url = "https://api.openai.com/v1/images/generations";
     var data = {
