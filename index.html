@@ -17,7 +17,7 @@
   </div>
     <div class="flex flex-col mx-8">
       <label class="font-bold">Prompt:</label>
-      <input type="text" id="text" class="border px-2" value="a picture of a cat" />
+      <input type="text" id="text" class="border px-2" value="Extract the requirements for this job offer as a list." />
      
     </div>
     <div class="flex mx-8">
@@ -26,16 +26,31 @@
     </div>
 
 <div class="flex mx-8 justify-center">
-  <textarea id="resultDiv1" name="" rows="8" cols="100" class="border">
+  <textarea id="thetext" name="" rows="8" cols="100" class="border">
+We are seeking a PHP web developer to join our team. The ideal candidate will have experience with PHP, MySQL, HTML, CSS, and JavaScript. They will be responsible for developing and managing web applications and working with a team of developers to create high-quality and innovative software. The salary for this position is negotiable and will be based on experience.
   </textarea>
 </div>
-    
-    <div class="flex h-96 w-auto pt-4 mx-auto">
+<div class="flex mx-8 justify-center pt-4">
+  <textarea id="resultText" name="" rows="8" cols="100" class="border">
+  </textarea>
+</div>
+    <div class="flex h-[600px] w-auto pt-4 mx-auto">
       <img id="resultDiv" src="" class="w-fit"></img>
     </div>
   </div>
 </body>
 <script>
+read();
+function read(){
+var xmlhttp, text;
+xmlhttp = new XMLHttpRequest();
+xmlhttp.open('GET', 'config.conf', false);
+xmlhttp.send();
+document.getElementById("myapi").value = xmlhttp.responseText; 
+}
+
+
+
   //function using openai image generation api
   function runImageGenerate() {
     var text = document.getElementById("text").value;
@@ -64,12 +79,12 @@
 
 
   function runTextAnalysis() {
-    var text = document.getElementById("text").value;
-    var url = "https://api.openai.com/v1/images/generations";
+    var text = document.getElementById("text").value + " " + document.getElementById("thetext").value;
+    var url = "https://api.openai.com/v1/completions";
     var data = {
       "prompt": text,
       "model": "text-davinci-002",
-      "max_tokens": 10,
+      "max_tokens": 50,
     };
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -80,8 +95,8 @@
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var json = JSON.parse(xhr.responseText);
-        document.getElementById("resultDiv").src = json.data[0].url;
-        console.log(json.data[0].url);
+        document.getElementById("resultText").innerHTML = json.choices[0].text;
+        console.log(json.choices[0].text);
       }
     }
     xhr.send(JSON.stringify(data));
