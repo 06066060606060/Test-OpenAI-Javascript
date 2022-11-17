@@ -33,13 +33,13 @@
 
         <span class="py-4 ml-2 text-white font-bold">Model:</span>
         <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2"
-          id="selectfilter" onchange="runget(this.value)">
+          id="selectfilter">
           <option id="optionx" value="text-davinci-002" selected>Text-davinci-002</option>
           <option id="optionx" value="text-davinci-001">Text-davinci-001</option>
-          <option id="optionx" value="Text-Ada-001">Text-Ada-001</option>
+          <option id="optionx" value="text-ada-001">Text-Ada-001</option>
           <option id="optionx" value="text-curie-001">Text-curie-001</option>
           <option id="optionx" value="text-babbage-001">Text-Babbage-001</option>
-          <option id="optionx" value="Code-Davinci-002">Code-Davinci-002</option>
+          <option id="optionx" value="code-davinci-002">Code-Davinci-002</option>
         </select>
         <a href="https://learn.microsoft.com/fr-fr/azure/cognitive-services/openai/concepts/models" class="text-blue-600 py-4 mx-4">Models concepts</a>
       </div>
@@ -120,7 +120,7 @@ We are seeking a PHP web developer to join our team. The ideal candidate will ha
     var url = "https://api.openai.com/v1/completions";
     var data = {
       "prompt": text,
-      "model": "text-davinci-002",
+      "model": document.getElementById("selectfilter").value,
       "max_tokens": 30,
     };
     var xhr = new XMLHttpRequest();
