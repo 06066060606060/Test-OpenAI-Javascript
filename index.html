@@ -1,188 +1,189 @@
+
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Document</title>
-</head>
-
-<body class="bg-gray-900">
-  <div class="flex justify-center">
-    <div class="flex flex-col justify-center py-8 max-w-3xl">
-      <h1 class="font-bold text-4xl mx-auto pb-8 text-white">
-        OpenAI API Test
-      </h1>
-      <p class="text-center py-4 font-bold text-white">
-        Analyse de texte et generation de code avec les modéles GPT-3 d'OpenAI
-      </p>
-      <div class="flex flex-row-reverse pt-8">
-        <input type="text" id="myapi" class="border px-2 mr-8" value="" placeholder="sk-........" />
-        <label class="font-bold pr-2 text-white">ApiKey:</label>
-      </div>
-      <div class="flex flex-col mx-8">
-        <label class="font-bold text-white">Prompt:</label>
-        <input type="text" id="text" class="border px-2"
-          value="Liste les exigences et le salaire de cette offre d'emploi." />
-
-      </div>
-      <div class="flex mx-8">
-        <button id="button1" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2 font-bold">Analyse Text</button>
-
-        <span class="py-4 ml-2 text-white font-bold">Model:</span>
-        <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2"
-          id="selectfilter">
-          <option id="optionx" value="text-davinci-002" selected>Text-davinci-002</option>
-          <option id="optionx" value="text-davinci-001">Text-davinci-001</option>
-          <option id="optionx" value="text-ada-001">Text-Ada-001</option>
-          <option id="optionx" value="text-curie-001">Text-curie-001</option>
-          <option id="optionx" value="text-babbage-001">Text-Babbage-001</option>
-          <option id="optionx" value="code-davinci-002">Code-Davinci-002</option>
-          <option id="optionx" value="code-cushman-001">Code-cushman-001</option>
-        </select>
-
-        <button id="button2" class="bg-gray-500  my-2 py-2 mx-2 rounded hover:bg-slate-400 px-2 font-bold">generate code</button>
-
-        <a href="https://learn.microsoft.com/fr-fr/azure/cognitive-services/openai/concepts/models" class="text-blue-600 py-4 mx-4">Models concepts</a>
-      </div>
-
-      <div class="flex flex-col mx-8 justify-center">
-        <h1 class="text-white">Entry:</h1>
-        <textarea id="thetext" name="" rows="6" cols="100" class="border p-2">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  
+  <body class="bg-gray-900">
+    <div class="flex justify-center">
+      <div class="flex flex-col justify-center py-8 max-w-3xl">
+        <h1 class="font-bold text-4xl mx-auto pb-8 text-white">
+          OpenAI API Test
+        </h1>
+        <p class="text-center py-4 font-bold text-white">
+          Analyse de texte et generation de code avec les modéles GPT-3 d'OpenAI
+        </p>
+        <div class="flex flex-row-reverse pt-8">
+          <input type="text" id="myapi" class="border px-2 mr-8" value="" placeholder="sk-........" />
+          <label class="font-bold pr-2 text-white">ApiKey:</label>
+        </div>
+        <div class="flex flex-col mx-8">
+          <label class="font-bold text-white">Prompt:</label>
+          <input type="text" id="text" class="border px-2"
+            value="Liste les exigences et le salaire de cette offre d'emploi." />
+  
+        </div>
+        <div class="flex mx-8">
+          <button id="button1" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2 font-bold">Analyse Text</button>
+  
+          <span class="py-4 ml-2 text-white font-bold">Model:</span>
+          <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2"
+            id="selectfilter">
+            <option id="optionx" value="text-davinci-002" selected>Text-davinci-002</option>
+            <option id="optionx" value="text-davinci-001">Text-davinci-001</option>
+            <option id="optionx" value="text-ada-001">Text-Ada-001</option>
+            <option id="optionx" value="text-curie-001">Text-curie-001</option>
+            <option id="optionx" value="text-babbage-001">Text-Babbage-001</option>
+            <option id="optionx" value="code-davinci-002">Code-Davinci-002</option>
+            <option id="optionx" value="code-cushman-001">Code-cushman-001</option>
+          </select>
+  
+          <button id="button2" class="bg-gray-500  my-2 py-2 mx-2 rounded hover:bg-slate-400 px-2 font-bold">generate code</button>
+  
+          <a href="https://learn.microsoft.com/fr-fr/azure/cognitive-services/openai/concepts/models" class="text-blue-600 py-4 mx-4">Models concepts</a>
+        </div>
+  
+        <div class="flex flex-col mx-8 justify-center">
+          <h1 class="text-white">Entry:</h1>
+          <textarea id="thetext" name="" rows="6" cols="100" class="border p-2">
 Nous recherchons un développeur web PHP pour rejoindre notre équipe. Le candidat idéal aura de l'expérience avec PHP, MySQL, HTML, CSS et JavaScript. Il sera chargé de développer et de gérer des applications web et de travailler avec une équipe de développeurs pour créer des logiciels innovants et de haute qualité. Le salaire pour ce poste est négociable et sera basé sur l'expérience.
-        </textarea>
-      </div>
-      <div id="resultat" class="flex-col mx-8 justify-center pt-4 hidden">
-        <h1 class="text-white">Result:</h1>
-        <textarea id="resultText" name="" rows="8" cols="100" class="border p-2"></textarea>
-      </div>
-      <p class="text-center py-4 font-bold text-white">
-        Generation d'images OpenAI
-      </p>
-      <div class="flex pl-4 py-4">
-        <button id="button3" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2">Generate Image from the prompt</button>
-      </div>
-      <div class="flex pt-4 mx-auto">
-        <img id="resultDiv" src="" alt="" class="h-[600px] w-auto"></img>
+          </textarea>
+        </div>
+        <div id="resultat" class="flex-col mx-8 justify-center pt-4 hidden">
+          <h1 class="text-white">Result:</h1>
+          <textarea id="resultText" name="" rows="8" cols="100" class="border p-2"></textarea>
+        </div>
+        <p class="text-center py-4 font-bold text-white">
+          Generation d'images OpenAI
+        </p>
+        <div class="flex pl-4 py-4">
+          <button id="button3" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2">Generate Image from the prompt</button>
+        </div>
+        <div class="flex pt-4 mx-auto">
+          <img id="resultDiv" src="" alt="" class="h-[600px] w-auto"></img>
+        </div>
       </div>
     </div>
-  </div>
-</body>
-
-<script>
-  window.addEventListener("DOMContentLoaded", (event) => {
-    read();
+  </body>
+  
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      read();
+    });
+  
+  button1.addEventListener("click", function () {
+    runTextAnalysis()
+    });
+  
+  button2.addEventListener("click", function () {
+    codeGen();
   });
-
-button1.addEventListener("click", function () {
-  runTextAnalysis()
+  
+  button3.addEventListener("click", function () {
+    runImageGenerate();
   });
-
-button2.addEventListener("click", function () {
-  codeGen();
-});
-
-button3.addEventListener("click", function () {
-  runImageGenerate();
-});
-
-  function read() {
-    var xmlhttp, text;
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'config.conf', false);
-    xmlhttp.send();
-    document.getElementById("myapi").value = xmlhttp.responseText;
-  }
-
-
-
-  //function using openai image generation api
-  function runImageGenerate() {
-    var text = document.getElementById("text").value;
-    var url = "https://api.openai.com/v1/images/generations";
-    var data = {
-      "prompt": text,
-      "n": 1,
-      "size": "1024x1024",
-    };
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    var myapikey = document.getElementById("myapi").value;
-    xhr.setRequestHeader("Content-Type", "application/json");
-    //authorization bearer token
-    xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        var json = JSON.parse(xhr.responseText);
-        document.getElementById("resultDiv").src = json.data[0].url;
-        console.log(json.data[0].url);
-      }
+  
+    function read() {
+      var xmlhttp, text;
+      xmlhttp = new XMLHttpRequest();
+      xmlhttp.open('GET', 'config.conf', false);
+      xmlhttp.send();
+      document.getElementById("myapi").value = xmlhttp.responseText;
     }
-    xhr.send(JSON.stringify(data));
-
-  }
-
-
-  function runTextAnalysis() {
-    var text = document.getElementById("text").value + " " + document.getElementById("thetext").value;
-    var url = "https://api.openai.com/v1/completions";
-    var data = {
-      "prompt": text,
-      "model": document.getElementById("selectfilter").value,
-      "max_tokens": 30,
-    };
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    var myapikey = document.getElementById("myapi").value;
-    xhr.setRequestHeader("Content-Type", "application/json");
-    //authorization bearer token
-    xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        var json = JSON.parse(xhr.responseText);
-        document.getElementById("resultat").style.display = "flex";
-        document.getElementById("resultText").innerHTML = json.choices[0].text;
-        console.log(json.choices[0].text);
+  
+  
+  
+    //function using openai image generation api
+    function runImageGenerate() {
+      var text = document.getElementById("text").value;
+      var url = "https://api.openai.com/v1/images/generations";
+      var data = {
+        "prompt": text,
+        "n": 1,
+        "size": "1024x1024",
+      };
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+      var myapikey = document.getElementById("myapi").value;
+      xhr.setRequestHeader("Content-Type", "application/json");
+      //authorization bearer token
+      xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var json = JSON.parse(xhr.responseText);
+          document.getElementById("resultDiv").src = json.data[0].url;
+          console.log(json.data[0].url);
+        }
       }
+      xhr.send(JSON.stringify(data));
+  
     }
-    xhr.send(JSON.stringify(data));
-
-  }
-
-  function codeGen() {
-    var text = document.getElementById("text").value;
-    var url = "https://api.openai.com/v1/completions";
-    var data = {
-      "prompt": text,
-      "model": document.getElementById("selectfilter").value,
-      "max_tokens": 256,
-    };
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    var myapikey = document.getElementById("myapi").value;
-    xhr.setRequestHeader("Content-Type", "application/json");
-    //authorization bearer token
-    xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        var json = JSON.parse(xhr.responseText);
-        var result = json.choices[0].text;
-        document.getElementById("resultText").innerHTML = result;
-        document.getElementById("thetext").hidden = true;
-        console.log(json.choices[0].text);
+  
+  
+    function runTextAnalysis() {
+      var text = document.getElementById("text").value + " " + document.getElementById("thetext").value;
+      var url = "https://api.openai.com/v1/completions";
+      var data = {
+        "prompt": text,
+        "model": document.getElementById("selectfilter").value,
+        "max_tokens": 30,
+      };
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+      var myapikey = document.getElementById("myapi").value;
+      xhr.setRequestHeader("Content-Type", "application/json");
+      //authorization bearer token
+      xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var json = JSON.parse(xhr.responseText);
+          document.getElementById("resultat").style.display = "flex";
+          document.getElementById("resultText").innerHTML = json.choices[0].text;
+          console.log(json.choices[0].text);
+        }
       }
+      xhr.send(JSON.stringify(data));
+  
     }
-    xhr.send(JSON.stringify(data));
-
-  }
-
-</script>
-
-<style>
-  [src=''] {
-    visibility: hidden;
-  }
-</style>
-
-</html>
+  
+    function codeGen() {
+      var text = document.getElementById("text").value;
+      var url = "https://api.openai.com/v1/completions";
+      var data = {
+        "prompt": text,
+        "model": document.getElementById("selectfilter").value,
+        "max_tokens": 256,
+      };
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+      var myapikey = document.getElementById("myapi").value;
+      xhr.setRequestHeader("Content-Type", "application/json");
+      //authorization bearer token
+      xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var json = JSON.parse(xhr.responseText);
+          var result = json.choices[0].text;
+          document.getElementById("resultText").innerHTML = result;
+          document.getElementById("thetext").hidden = true;
+          console.log(json.choices[0].text);
+        }
+      }
+      xhr.send(JSON.stringify(data));
+  
+    }
+  
+  </script>
+  
+  <style>
+    [src=''] {
+      visibility: hidden;
+    }
+  </style>
+  
+  </html>
