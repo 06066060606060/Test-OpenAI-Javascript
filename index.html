@@ -53,7 +53,7 @@
 Nous recherchons un développeur web PHP pour rejoindre notre équipe. Le candidat idéal aura de l'expérience avec PHP, MySQL, HTML, CSS et JavaScript. Il sera chargé de développer et de gérer des applications web et de travailler avec une équipe de développeurs pour créer des logiciels innovants et de haute qualité. Le salaire pour ce poste est négociable et sera basé sur l'expérience.
         </textarea>
       </div>
-      <div class="flex flex-col mx-8 justify-center pt-4">
+      <div id="resultat" class="flex-col mx-8 justify-center pt-4">
         <h1 class="text-white">Result:</h1>
         <textarea id="resultText" name="" rows="8" cols="100" class="border p-2"></textarea>
       </div>
@@ -73,6 +73,7 @@ Nous recherchons un développeur web PHP pour rejoindre notre équipe. Le candid
 <script>
   window.addEventListener("DOMContentLoaded", (event) => {
     read();
+    document.getElementById("resultat").hidden = true;
   });
 
 button1.addEventListener("click", function () {
@@ -141,6 +142,7 @@ button3.addEventListener("click", function () {
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         var json = JSON.parse(xhr.responseText);
+        document.getElementById("resultat").hidden = false;
         document.getElementById("resultText").innerHTML = json.choices[0].text;
         console.log(json.choices[0].text);
       }
