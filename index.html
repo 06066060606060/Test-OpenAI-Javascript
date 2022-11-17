@@ -15,7 +15,7 @@
         OpenAI API Test
       </h1>
       <p class="text-center py-4 font-bold text-white">
-        Analyse de texte et avec les modéles GPT-3 d'OpenAI
+        Analyse de texte et generation de code avec les modéles GPT-3 d'OpenAI
       </p>
       <div class="flex flex-row-reverse pt-8">
         <input type="text" id="myapi" class="border px-2 mr-8" value="" placeholder="sk-........" />
@@ -39,7 +39,13 @@
           <option id="optionx" value="text-ada-001">Text-Ada-001</option>
           <option id="optionx" value="text-curie-001">Text-curie-001</option>
           <option id="optionx" value="text-babbage-001">Text-Babbage-001</option>
+          <option id="optionx" value="code-davinci-002">Code-Davinci-002</option>
+          <option id="optionx" value="code-cushman-001">Code-cushman-001</option>
         </select>
+
+        <button id="button" class="bg-gray-500  my-2 py-2 mx-2 rounded hover:bg-slate-400 px-2 font-bold"
+          onclick="codeGen()">generate code</button>
+
         <a href="https://learn.microsoft.com/fr-fr/azure/cognitive-services/openai/concepts/models" class="text-blue-600 py-4 mx-4">Models concepts</a>
       </div>
 
@@ -131,6 +137,33 @@ Nous recherchons un développeur web PHP pour rejoindre notre équipe. Le candid
       if (xhr.readyState == 4 && xhr.status == 200) {
         var json = JSON.parse(xhr.responseText);
         document.getElementById("resultText").innerHTML = json.choices[0].text;
+        console.log(json.choices[0].text);
+      }
+    }
+    xhr.send(JSON.stringify(data));
+
+  }
+
+  function codeGen() {
+    var text = document.getElementById("text").value;
+    var url = "https://api.openai.com/v1/completions";
+    var data = {
+      "prompt": text,
+      "model": document.getElementById("selectfilter").value,
+      "max_tokens": 256,
+    };
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    var myapikey = document.getElementById("myapi").value;
+    xhr.setRequestHeader("Content-Type", "application/json");
+    //authorization bearer token
+    xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var json = JSON.parse(xhr.responseText);
+        var result = json.choices[0].text;
+        document.getElementById("resultText").innerHTML = result;
+        document.getElementById("thetext").hidden = true;
         console.log(json.choices[0].text);
       }
     }
