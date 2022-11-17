@@ -1,67 +1,81 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
 </head>
+
 <body>
   <div class="flex justify-center">
-  <div class="flex flex-col justify-center py-8 max-w-3xl">
-    <h1 class="font-bold text-2xl mx-auto pb-8">
-      OpenAI Test
-    </h1>
-    <div class="flex flex-row-reverse">
-      <input type="text" id="myapi" class="border px-2 mr-8" value="" placeholder="sk-........"/>
-    <label class="font-bold">ApiKey:</label>
-  </div>
-    <div class="flex flex-col mx-8">
-      <label class="font-bold">Prompt:</label>
-      <input type="text" id="text" class="border px-2" value="Extract the requirements for this job offer as a list." />
-     
-    </div>
-    <div class="flex mx-8">
-      <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2" onclick="runTextAnalysis()">Analyse Text</button> 
-    </div>
+    <div class="flex flex-col justify-center py-8 max-w-3xl">
+      <h1 class="font-bold text-2xl mx-auto pb-8">
+        OpenAI API Test
+      </h1>
+      <p class="text-center py-4 font-bold">
+Analyse de texte avec les modéles GPT-3 d'OpenAI
+      </p>
+      <div class="flex flex-row-reverse">
+        <input type="text" id="myapi" class="border px-2 mr-8" value="" placeholder="sk-........" />
+        <label class="font-bold pr-2">ApiKey:</label>
+      </div>
+      <div class="flex flex-col mx-8">
+        <label class="font-bold">Prompt:</label>
+        <input type="text" id="text" class="border px-2"
+          value="Extract the requirements for this job offer as a list." />
 
-<div class="flex flex-col mx-8 justify-center">
-  <h1>Entry:</h1>
-  <textarea id="thetext" name="" rows="8" cols="100" class="border">
+      </div>
+      <div class="flex mx-8">
+        <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2 font-bold"
+          onclick="runTextAnalysis()">Analyse Text</button>
+
+        <span class="py-4 ml-2">Model:</span>
+        <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2" id="selectfilter" onchange="runget(this.value)">
+          <option id="optionx" value="text-davinci-002" selected>text-davinci-002</option>
+          <option id="optionx" value="month">mois</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col mx-8 justify-center">
+        <h1>Entry:</h1>
+        <textarea id="thetext" name="" rows="8" cols="100" class="border text-center">
 We are seeking a PHP web developer to join our team. The ideal candidate will have experience with PHP, MySQL, HTML, CSS, and JavaScript. They will be responsible for developing and managing web applications and working with a team of developers to create high-quality and innovative software. The salary for this position is negotiable and will be based on experience.
   </textarea>
-</div>
-<div class="flex flex-col mx-8 justify-center pt-4">
-  <h1>Result:</h1>
-  <textarea id="resultText" name="" rows="4" cols="100" class="border">
+      </div>
+      <div class="flex flex-col mx-8 justify-center pt-4">
+        <h1>Result:</h1>
+        <textarea id="resultText" name="" rows="4" cols="100" class="border">
   </textarea>
-</div>
-<div class="flex pl-4 py-4">
-  <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2" onclick="runImageGenerate()">Generate Image from the prompt</button>
-</div>
-    <div class="flex pt-4 mx-auto">
-      <img id="resultDiv" src="" alt="" class="h-[600px] w-auto"></img>
+      </div>
+      <div class="flex pl-4 py-4">
+        <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2"
+          onclick="runImageGenerate()">Generate Image from the prompt</button>
+      </div>
+      <div class="flex pt-4 mx-auto">
+        <img id="resultDiv" src="" alt="" class="h-[600px] w-auto"></img>
+      </div>
     </div>
   </div>
-</div>
 </body>
 
 <script>
-window.addEventListener("DOMContentLoaded", (event) => {
-read();
-});
+  window.addEventListener("DOMContentLoaded", (event) => {
+    read();
+  });
 
 
 
 
 
-function read(){
-var xmlhttp, text;
-xmlhttp = new XMLHttpRequest();
-xmlhttp.open('GET', 'config.conf', false);
-xmlhttp.send();
-document.getElementById("myapi").value = xmlhttp.responseText; 
-}
+  function read() {
+    var xmlhttp, text;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', 'config.conf', false);
+    xmlhttp.send();
+    document.getElementById("myapi").value = xmlhttp.responseText;
+  }
 
 
 
@@ -78,7 +92,7 @@ document.getElementById("myapi").value = xmlhttp.responseText;
     xhr.open("POST", url, true);
     var myapikey = document.getElementById("myapi").value;
     xhr.setRequestHeader("Content-Type", "application/json");
-//authorization bearer token
+    //authorization bearer token
     xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -104,7 +118,7 @@ document.getElementById("myapi").value = xmlhttp.responseText;
     xhr.open("POST", url, true);
     var myapikey = document.getElementById("myapi").value;
     xhr.setRequestHeader("Content-Type", "application/json");
-//authorization bearer token
+    //authorization bearer token
     xhr.setRequestHeader("Authorization", "Bearer " + myapikey);
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -122,6 +136,7 @@ document.getElementById("myapi").value = xmlhttp.responseText;
 <style>
   [src=''] {
     visibility: hidden;
-}
+  }
 </style>
+
 </html>
