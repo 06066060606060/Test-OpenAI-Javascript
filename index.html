@@ -8,21 +8,21 @@
   <title>Document</title>
 </head>
 
-<body>
-  <div class="flex justify-center">
+<body class="bg-gray-900">
+  <div class="flex justify-center ">
     <div class="flex flex-col justify-center py-8 max-w-3xl">
-      <h1 class="font-bold text-2xl mx-auto pb-8">
+      <h1 class="font-bold text-4xl mx-auto pb-8 text-white">
         OpenAI API Test
       </h1>
-      <p class="text-center py-4 font-bold">
-Analyse de texte avec les modéles GPT-3 d'OpenAI
+      <p class="text-center py-4 font-bold text-white">
+        Analyse de texte et de code avec les modéles GPT-3 d'OpenAI
       </p>
-      <div class="flex flex-row-reverse">
+      <div class="flex flex-row-reverse pt-8">
         <input type="text" id="myapi" class="border px-2 mr-8" value="" placeholder="sk-........" />
-        <label class="font-bold pr-2">ApiKey:</label>
+        <label class="font-bold pr-2 text-white">ApiKey:</label>
       </div>
       <div class="flex flex-col mx-8">
-        <label class="font-bold">Prompt:</label>
+        <label class="font-bold text-white">Prompt:</label>
         <input type="text" id="text" class="border px-2"
           value="Extract the requirements for this job offer as a list." />
 
@@ -31,10 +31,15 @@ Analyse de texte avec les modéles GPT-3 d'OpenAI
         <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2 font-bold"
           onclick="runTextAnalysis()">Analyse Text</button>
 
-        <span class="py-4 ml-2">Model:</span>
-        <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2" id="selectfilter" onchange="runget(this.value)">
-          <option id="optionx" value="text-davinci-002" selected>text-davinci-002</option>
-          <option id="optionx" value="month">mois</option>
+        <span class="py-4 ml-2 text-white font-bold">Model:</span>
+        <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2"
+          id="selectfilter" onchange="runget(this.value)">
+          <option id="optionx" value="text-davinci-002" selected>Text-davinci-002</option>
+          <option id="optionx" value="text-davinci-001">Text-davinci-001</option>
+          <option id="optionx" value="Text-Ada-001">Text-Ada-001</option>
+          <option id="optionx" value="text-curie-001">Text-curie-001</option>
+          <option id="optionx" value="text-babbage-001">Text-Babbage-001</option>
+          <option id="optionx" value="Code-Davinci-002">Code-Davinci-002</option>
         </select>
       </div>
 
@@ -49,6 +54,9 @@ We are seeking a PHP web developer to join our team. The ideal candidate will ha
         <textarea id="resultText" name="" rows="4" cols="100" class="border">
   </textarea>
       </div>
+      <p class="text-center py-4 font-bold text-white">
+        Generation d'images OpenAI
+      </p>
       <div class="flex pl-4 py-4">
         <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2"
           onclick="runImageGenerate()">Generate Image from the prompt</button>
