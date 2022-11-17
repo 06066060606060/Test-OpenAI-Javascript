@@ -28,8 +28,7 @@
 
       </div>
       <div class="flex mx-8">
-        <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2 font-bold"
-          onclick="runTextAnalysis()">Analyse Text</button>
+        <button id="button1" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 px-2 font-bold">Analyse Text</button>
 
         <span class="py-4 ml-2 text-white font-bold">Model:</span>
         <select name="Affichage" class="bg-gray-500  my-2 py-2 rounded-md hover:bg-slate-400 px-2 font-bold border ml-2"
@@ -43,8 +42,7 @@
           <option id="optionx" value="code-cushman-001">Code-cushman-001</option>
         </select>
 
-        <button id="button" class="bg-gray-500  my-2 py-2 mx-2 rounded hover:bg-slate-400 px-2 font-bold"
-          onclick="codeGen()">generate code</button>
+        <button id="button2" class="bg-gray-500  my-2 py-2 mx-2 rounded hover:bg-slate-400 px-2 font-bold">generate code</button>
 
         <a href="https://learn.microsoft.com/fr-fr/azure/cognitive-services/openai/concepts/models" class="text-blue-600 py-4 mx-4">Models concepts</a>
       </div>
@@ -63,8 +61,7 @@ Nous recherchons un développeur web PHP pour rejoindre notre équipe. Le candid
         Generation d'images OpenAI
       </p>
       <div class="flex pl-4 py-4">
-        <button id="button" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2"
-          onclick="runImageGenerate()">Generate Image from the prompt</button>
+        <button id="button3" class="bg-gray-500  my-2 py-2 rounded hover:bg-slate-400 mx-4 px-2">Generate Image from the prompt</button>
       </div>
       <div class="flex pt-4 mx-auto">
         <img id="resultDiv" src="" alt="" class="h-[600px] w-auto"></img>
@@ -78,9 +75,17 @@ Nous recherchons un développeur web PHP pour rejoindre notre équipe. Le candid
     read();
   });
 
+button1.addEventListener("click", function () {
+  runTextAnalysis()
+  });
 
+button2.addEventListener("click", function () {
+  codeGen();
+});
 
-
+button3.addEventListener("click", function () {
+  runImageGenerate();
+});
 
   function read() {
     var xmlhttp, text;
