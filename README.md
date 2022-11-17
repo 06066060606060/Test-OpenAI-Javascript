@@ -1,2 +1,2 @@
 <h1 align="">Simple OpenAI Test</h1>
-<h3 align=""></h3>
+<img src="./img/capture.jpg"  width="640"  align=""></img>
